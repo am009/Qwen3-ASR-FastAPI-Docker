@@ -504,10 +504,10 @@ class Qwen3ASRModel:
         for i in range(0, len(texts), batch_size):
             sub_text = texts[i : i + batch_size]
             sub_wavs = wavs[i : i + batch_size]
-            inputs = self.processor(text=sub_text, audio=sub_wavs, return_tensors="pt", padding=True)
+            inputs = self.processor(text=sub_text, audio=sub_wavs, return_tensors="pt", padding=False)
             inputs = inputs.to(self.model.device).to(self.model.dtype)
 
-            text_ids = self.model.generate(**inputs, max_new_tokens=self.max_new_tokens)
+            text_ids = self.model.generate(**inputs, max_new_tokens=self.max_new_tokens, use_cache=False)
 
             decoded = self.processor.batch_decode(
                 text_ids.sequences[:, inputs["input_ids"].shape[1]:],

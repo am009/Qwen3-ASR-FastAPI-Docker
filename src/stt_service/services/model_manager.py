@@ -43,8 +43,8 @@ class QwenASRManager:
                 "device_map": device,
                 "attn_implementation": params.get("attn_implementation", "sdpa")
             } if aligner_id else None,
-            max_inference_batch_size=params.get("max_inference_batch_size", 32),
-            max_new_tokens=params.get("max_new_tokens", 512)
+            max_inference_batch_size=params.get("max_inference_batch_size", 1),
+            max_new_tokens=params.get("max_new_tokens", 512),
         )
         self.current_model_id = model_id
         self.current_device = device
