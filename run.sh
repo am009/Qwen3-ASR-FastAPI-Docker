@@ -9,7 +9,7 @@ if [ -f .env ]; then
 fi
 
 # Defaults
-API_PORT="${API_PORT:-8000}"
+API_PORT="${API_PORT:-18123}"
 HOST_MODELS_PATH="${HOST_MODELS_PATH:-./models}"
 
 IMAGE_NAME="qwen3-asr"
@@ -30,7 +30,7 @@ docker run -d \
   -p "${API_PORT}:8000" \
   -v "${HOST_MODELS_PATH}:/app/models" \
   -v ./src:/app/src \
-  -v ./qwen_asr:/app/qwen_asr
+  -v ./qwen_asr:/app/qwen_asr \
   "$IMAGE_NAME"
 
 echo "Container '$CONTAINER_NAME' started on port $API_PORT"
