@@ -1,6 +1,7 @@
 services:
   qwen3-asr:
     build: .
+    privileged: true
     container_name: qwen3_asr_api
     # Port mapping: [Your PC Port] : [Internal Container Port]
     ports:

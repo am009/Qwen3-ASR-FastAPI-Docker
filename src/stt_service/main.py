@@ -89,7 +89,7 @@ async def transcribe(
             await qwen_manager.load_model({
                 "model_id": "Qwen/Qwen3-ASR-1.7B",
                 "device": "cuda:0",
-                "dtype": "bf16"
+                "dtype": "float16"
             })
         # raise HTTPException(status_code=503, detail="API is idle. Call /load_model first.")
 
